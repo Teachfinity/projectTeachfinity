@@ -12,7 +12,8 @@ class Main extends Component {
         return(
             <div>
                 <Header />
-                        WELCOME to TEACHFINITY
+                        
+
 
             </div>
 
