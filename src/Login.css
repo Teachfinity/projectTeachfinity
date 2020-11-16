@@ -1,0 +1,51 @@
+.background{
+    display: flex;
+    flex-direction: row;
+    background-image: url(https://t4.ftcdn.net/jpg/01/99/79/89/360_F_199798901_fZNnFhICSdEvOTWmwIpiV103vdzA7cCc.jpg);
+    background-size: 100% 100%;
+    min-height: 100ex;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+}
+.background-cover{
+    display: flex;
+    flex-direction: row;
+    background-color: #3aa5abb7;
+    min-height: 100ex;
+    min-width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    display: flex;
+    background-color: #EBECF1;
+    box-shadow: -30px 30px 20px rgba(0, 0, 0, 0.452);
+    color: #3AA5AB;
+    justify-content: center;
+    text-align: center;
+    height: 600px;
+    width: 450px;
+}
+.textfields{
+    margin-bottom: 15px;
+    width: 300px;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.login-button{
+    margin-top: 30px;
+    background-color: #3AA5AB;
+    font-weight: bolder;
+    color: #EBECF1;
+    border: #EBECF1;
+    height: 40px;
+    width: 250px;
+}
+.login-button:hover{
+    background-color: #3aa5abc4;
+    color: #EBECF1;
+}
