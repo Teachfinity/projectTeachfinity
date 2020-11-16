@@ -13,7 +13,7 @@ class Signup extends Component {
                 <header className="background-cover">
                 <div className="container">
                     <Form>
-                        <br></br><h1>Registeration</h1><br></br>
+                        <br></br><h1>Signup</h1><br></br>
                         <div className="textfields">
                             <TextField
                             required

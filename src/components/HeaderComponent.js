@@ -11,7 +11,7 @@ export default class Header extends Component {
         return(
             
                 <Navbar dark >
-                    <div className=" center conatiner">
+                    <div >
 
                     TEACHFINITY
                    
