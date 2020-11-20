@@ -96,7 +96,6 @@ class Login extends Component {
                                 <NavLink className="nav-link" to="/signup" >
                                     <br></br><h6>Don't have an account?</h6>
                                     <h7 >Sign up</h7>
-
                                 </NavLink>
 
 
