@@ -9,15 +9,7 @@ export default class Header extends Component {
     }
     render(){
         return(
-            
-                <Navbar dark >
-                    <div >
-
-                    TEACHFINITY
-                   
-                    </div>
-                </Navbar>
-            
+            <div></div>
         )
     }
 }

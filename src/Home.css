@@ -1,0 +1,77 @@
+.titlebar{
+    display: flex;
+    background-color: #00b9be;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+}
+.title-contents{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+.logo{
+    margin-left: 5px;
+    height: 80px;
+    width: 85px;
+}
+.sidebar{
+    background-color: #4dc3c7;
+    width: 100px;
+    height: 100ex;
+}
+.notification{
+    color: goldenrod;
+}
+.icons{
+    color: #EBECF1;
+}
+.iactive{
+    color: #4dc3c7;
+}
+.text{
+    font-size: 12px;
+    font-weight: bolder;
+    color: #EBECF1;
+}
+.tactive{
+    font-size: 12px;
+    font-weight: bolder;
+    color: #4dc3c7;
+}
+.buttons{
+    align-items: center;
+    justify-content: center;
+    border: #4dc3c7;
+    background-color: #4dc3c7;
+    width: 100px;
+    height: 80px;
+}
+.buttons:hover{
+    background-color: #76ced1;
+}
+.active{
+    border: #EBECF1;
+    background-color: #EBECF1;
+    width: 100px;
+    height: 80px;
+}
+.main{
+    display: flex;
+    background-color: #EBECF1;
+}
+.center{
+    display: flex;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.classes{
+    border: #EBECF1;
+    border-radius: 20px;
+    width: 150px;
+    height: 80px;
+    background-color: #4dc3c7;
+    color: #EBECF1;
+    font-weight: bolder;
+}
