@@ -34,6 +34,8 @@
     font-size: 12px;
     font-weight: bolder;
     color: #EBECF1;
+    text-transform: capitalize;
+    text-align: center;
 }
 .tactive{
     font-size: 12px;
@@ -51,6 +53,11 @@
 .buttons:hover{
     background-color: #76ced1;
 }
+
+.sidebar .MuiButton-label {
+    display: grid !important;
+}
+
 .active{
     border: #EBECF1;
     background-color: #EBECF1;

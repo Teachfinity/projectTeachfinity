@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import MyClasses from "./MyClasses";
 import Chat from "./Chat";
 import Diary from "./Diary";

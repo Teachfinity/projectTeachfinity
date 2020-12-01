@@ -3,7 +3,7 @@ import Header from "./HeaderComponent" ;
 import Login from './UserManagement' ;
 import Home from './Home' ;
 import Signup from "./Signup" ;
-import {Switch , Route , Redirect} from "react-router-dom"
+import {Router} from "react-router-dom"
 
 class Main extends Component {
     constructor(props){
@@ -14,10 +14,7 @@ class Main extends Component {
     
     render(){
         return(
-                <Home></Home>
-
-
-
+            <Home></Home>
         );
     }
 }
