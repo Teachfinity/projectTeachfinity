@@ -22,7 +22,7 @@ function Home() {
     };
     return (
         <header>
-            <div className="titlebar">
+            <div className="titlebar col-12">
                 <img className="logo" src={Logo} alt="main"></img>
                 <div className="title-contents">
                     <div><NotificationsIcon fontSize='large' className="notification"></NotificationsIcon></div>
@@ -31,18 +31,18 @@ function Home() {
             </div>
             <div className="main"><div className="sidebar">
                 
-                <div><button onClick={()=>goto} className="active"><School fontSize='large' className="iactive"></School><div className="tactive">My Classes</div></button></div>
+                <div><Button className="buttons" href="/" ><School fontSize='large' className="icons center"></School><div className="text">My Classes</div></Button></div>
                 <div>
-                    <Button className="buttons sidebar" href="/chat"  >
+                    <Button className="buttons" href="/chat"  >
                         
                     <QuestionAnswerIcon fontSize='large' className="icons" />
                     
                     <div className="text" >Chat </div>
                     </Button>
                 </div>
-                <div><button className="buttons"><LocalLibrary fontSize='large' className="icons"></LocalLibrary><div className="text">Diary</div></button></div>
-                <div><button className="buttons"><DateRangeIcon fontSize='large' className="icons"></DateRangeIcon><div className="text">Timetable</div></button></div>
-                <div><button className="buttons"><BookmarksIcon fontSize='large' className="icons"></BookmarksIcon><div className="text">Bookmarks</div></button></div>
+                <div><Button className="buttons" href="/diary"><LocalLibrary fontSize='large' className="icons"></LocalLibrary><div className="text">Diary</div></Button></div>
+                <div><Button className="buttons" href="/timetable"><DateRangeIcon fontSize='large' className="icons"></DateRangeIcon><div className="text">Timetable</div></Button></div>
+                <div><Button className="buttons" href="/bookmarks"><BookmarksIcon fontSize='large' className="icons center"></BookmarksIcon><div className="text">Bookmarks</div></Button></div>
             </div>
                 <div className="center">
                     <Routes></Routes>

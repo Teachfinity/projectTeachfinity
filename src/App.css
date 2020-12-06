@@ -21,6 +21,32 @@
   background: #9575CD ;
   color:floralwhite;
 }
+.cardhandle {
+  padding: 50px
+
+
+}
+.cardcontainer{
+  width: 11cm;
+  height: 11cm;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.butcenter {
+  padding-left: 2.5cm;
+}
+.butcenterr {
+  padding-left: 1.25cm;
+}
+
+.classcardimg{
+  
+  width: 180px ;
+  height:200px ;
+}
+
 
 .address{
   font-size:80%;

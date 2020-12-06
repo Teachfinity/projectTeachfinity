@@ -66,6 +66,7 @@
 }
 .main{
     display: flex;
+    max-width: 100%;
     background-color: #EBECF1;
 }
 .center{
