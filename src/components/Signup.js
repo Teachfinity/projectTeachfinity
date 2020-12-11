@@ -1,4 +1,5 @@
 import React, { Component } from "react" ;
+import axios from "axios" ;
 import {Form} from "reactstrap" ;
 import {TextField} from "@material-ui/core";
 import "../Signup.css";
@@ -9,6 +10,7 @@ class Signup extends Component {
         this.state = {
             nameRegex : /^[a-zA-Z\- ]{3,20}$/ ,
             passwordRegex : /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+            
             user: {
                  firstname: "" ,
                  lastname: "" ,
@@ -21,15 +23,18 @@ class Signup extends Component {
     componentDidMount(){
         ValidatorForm.addValidationRule('nameLength' , (value) => {
             if ( this.state.nameRegex.test(value) ){
+                this.setState({error: true}) ;
                 return true 
                 
             }
             else {
+                this.setState({error: false}) ;
                 return false
             }
         });
         ValidatorForm.addValidationRule('newPassword' , (value) => {
             if(this.state.passwordRegex.test(value)){
+                //this.setState({error: true}) ;
                 return true;
             }
             else{
@@ -76,9 +81,36 @@ class Signup extends Component {
         user[event.target.name] = event.target.value;
         this.setState({ user });
     }
-    handleSubmit = () => {
-        alert(this.state.user.firstname + " " + this.state.user.lastname);
-    }
+
+    handleSubmit = (event) => {
+        
+           
+        
+       
+
+        
+
+        const newuser= {
+            "name" :  this.state.user.firstname + " " + this.state.user.lastname ,
+            "email" : this.state.user.email ,
+            "password" : this.state.user.password
+        }
+
+        
+     axios.post(`http://localhost:5000/api/user/register`, newuser )
+      .then(res => {
+        console.log(res);
+        alert("Registered Successfully" + res.status) ;
+      })
+      .catch(error => {console.log("Error: "+ error.message)
+      alert(error.message);
+      
+    }) 
+
+
+        }
+
+    
 
     render(){
         return(
