@@ -3,8 +3,9 @@ import Header from "./HeaderComponent" ;
 import Login from './UserManagement' ;
 import Home from './Home' ;
 import Signup from "./Signup" ;
-
-import {Router} from "react-router-dom"
+import Sidebar from "./Sidebar" ;
+import {Route , Switch , Redirect, withRouter , BrowserRouter } from "react-router-dom"
+import MyClasses from "./MyClasses";
 
 
 class Main extends Component {
@@ -16,7 +17,14 @@ class Main extends Component {
     
     render(){
         return(
-             <Signup></Signup> 
+
+             <Switch>
+                 <Route  path='/login' component={Login} />
+                 <Route  path='/signup' component={Signup} />
+                 <Route path="/home" component={Home} />
+                 <Route path="/sidebar" component={Sidebar} />
+                 <Redirect to="/login" />
+             </Switch>
             
         );
     }

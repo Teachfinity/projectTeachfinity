@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route , Redirect } from 'react-router-dom';
 import MyClasses from "./MyClasses";
 import Chat from "./Chat";
 import Diary from "./Diary";
@@ -9,11 +9,12 @@ function Routes() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={MyClasses} />
+                <Route exact path="/myclasses" component={MyClasses} />
                 <Route path="/chat" component={Chat} />
                 <Route path="/diary" component={Diary} />
                 <Route path="/timetable" component={Timetable} />
                 <Route path="/bookmarks" component={Bookmarks} />
+                <Redirect to="myclasses"/>
             </Switch>
         </BrowserRouter>
     );

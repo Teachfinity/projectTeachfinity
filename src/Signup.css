@@ -21,10 +21,14 @@
     background-color: #EBECF1;
     box-shadow: -30px 30px 20px rgba(0, 0, 0, 0.452);
     color: #3AA5AB;
-    height: 600px;
+    height: max-content;
     width: 700px;
+    padding-bottom: 3ch;
 }
 .textfields{
     margin-bottom: 15px;
     width: 300px;
+}
+.error{
+    color: red ;
 }

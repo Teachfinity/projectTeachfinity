@@ -1,15 +1,35 @@
 import React, { Component } from "react" ;
+import { CommonLoading } from 'react-loadingg';
 import axios from "axios" ;
 import {Form} from "reactstrap" ;
 import {TextField} from "@material-ui/core";
 import "../Signup.css";
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+
+
+const validateForm = (errors) => {
+    let valid = true;
+    Object.values(errors).forEach(
+      // if we have an error string set valid to false
+      (val) => val.length > 0 && (valid = false)
+    );
+    return valid;
+}
 class Signup extends Component {
     constructor(props){
         super(props);
         this.state = {
             nameRegex : /^[a-zA-Z\- ]{3,20}$/ ,
             passwordRegex : /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+            validEmailRegex: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+           , loading: false ,
+           errors : {
+               firstname : '' ,
+               lastname : '' ,
+               email : '' ,
+               password : '' ,
+               confirmpassword: ''
+           } ,
             
             user: {
                  firstname: "" ,
@@ -20,143 +40,137 @@ class Signup extends Component {
              }
         }
     }
-    componentDidMount(){
-        ValidatorForm.addValidationRule('nameLength' , (value) => {
-            if ( this.state.nameRegex.test(value) ){
-                this.setState({error: true}) ;
-                return true 
-                
-            }
-            else {
-                this.setState({error: false}) ;
-                return false
-            }
-        });
-        ValidatorForm.addValidationRule('newPassword' , (value) => {
-            if(this.state.passwordRegex.test(value)){
-                //this.setState({error: true}) ;
-                return true;
-            }
-            else{
-                return false;
-            }
-        });
-        ValidatorForm.addValidationRule('confirmPassword' , (value) => {
-            if (value !== this.state.user.password) {
-                return false;
-            }
-            return true;
-        });
-    }
-    componentWillUnmount() {
-        
-        ValidatorForm.removeValidationRule('nameLength');
-        ValidatorForm.removeValidationRule('newPassword');
-        ValidatorForm.removeValidationRule('confirmPassword');  
-    }
     
-    handleFirstNameChange = (event) => {
-        const { user } = this.state;
-        user[event.target.name] = event.target.value;
-        this.setState({ user });
-    }
-    handleLastNameChange = (event) => {
-        const { user } = this.state;
-        user[event.target.name] = event.target.value;
-        this.setState({ user });
-    }
-    handleEmailChange = (event) => {
-        const { user } = this.state;
-        user[event.target.name] = event.target.value;
-        this.setState({ user });
-    }
-    handlePasswordChange = (event) => {
-        const { user } = this.state;
-        user[event.target.name] = event.target.value;
-        this.setState({ user });
-      
-    }
-    handleConfirmPassword = (event) => {
-        const { user } = this.state;
-        user[event.target.name] = event.target.value;
-        this.setState({ user });
-    }
+    
+    
 
-    handleSubmit = (event) => {
-        
-           
-        
-       
 
+    handleChange = (event) => {
+        event.preventDefault() ;
         
+  const { name , value } = event.target;
+  let errors = this.state.errors;
 
-        const newuser= {
+  const {user} = this.state;
+  user[event.target.name] = event.target.value ;
+  this.setState({user}) ;
+
+  switch (name) {
+    case 'firstname': 
+      errors.firstname = 
+        this.state.nameRegex.test(value) && this.state.user.firstname.length >0 
+        ? '' : 'Name must be atleast 3 characters long' ;
+      break;
+
+    case 'lastname':
+          errors.lastname =
+              this.state.nameRegex.test(value) && this.state.user.lastname.length > 0
+               ? '' : ' Name must be atleast 3 characters long!' ;
+    break;
+    case 'email': 
+      errors.email = 
+       this.state.validEmailRegex.test(value) && this.state.user.email.length > 0 
+          ? ''
+          : 'Email is not valid!';
+      break;
+    case 'password': 
+      errors.password = 
+        this.state.passwordRegex.test(value) && this.state.user.password.length > 0
+          ? "" : 'Password must be 8 characters long with atleast one Uppercase and numeric character !'
+          ;
+      break;
+    case 'confirmpassword': 
+      errors.confirmpassword = 
+        value !== this.state.user.password  && this.state.user.confirmpassword.length > 0 
+          ? 'password and Confirm password fields donot match' : ''
+          ;
+      break;
+    default:
+      break;
+  }
+
+  this.setState({errors})
+  
+}
+
+    
+ handleSubmit = (event) => {
+        event.preventDefault() ;
+
+        if(validateForm(this.state.errors)){
+             const newuser= {
             "name" :  this.state.user.firstname + " " + this.state.user.lastname ,
             "email" : this.state.user.email ,
             "password" : this.state.user.password
         }
 
         
-     axios.post(`http://localhost:5000/api/user/register`, newuser )
-      .then(res => {
-        console.log(res);
-        alert("Registered Successfully" + res.status) ;
-      })
-      .catch(error => {console.log("Error: "+ error.message)
-      alert(error.message);
-      
-    }) 
+            this.setState({ loading: true });
+            axios.post(`http://localhost:5000/api/user/register`, newuser)
+                .then(res => {
+                    this.setState({ loading: false });
+                    console.log(res);
+                    alert("Registered Successfully" + res.status);
+                })
+                .catch(error => {
+                    this.setState({ loading: false });
+                    alert(error.message);
+                })
 
 
         }
+        else {
 
-    
+            alert("Please remove the errors in form before submitting") ;
+        }
+}
 
     render(){
+        const errors = this.state.errors ;
         return(
             <header className="background">
                 <header className="background-cover">
                 <div className="container">
+                    { this.state.loading ? <CommonLoading /> : null }
                     <ValidatorForm>
                         <br></br><h1>Signup</h1><br></br>
                         <div className="textfields">
                             <TextValidator
                              label= "First Name"
                              name="firstname"
-                             onChange={this.handleFirstNameChange}
+                             onChange={this.handleChange}
                              value={this.state.user.firstname}
-                             validators={['required' , 'nameLength']}
                              variant="outlined"
-                             errorMessages={['This is a required Field', 'Name should be atleast 3 and less than 21 characters long']}
+                             
                              placeholder="First Name"
                              className="textfields"
                             />
+                            {errors.firstname.length > 0 && <span className='error'>{errors.firstname}</span>}
                         </div>
                         <div className="textfields">
                             <TextValidator
                             label= "Last Name"
                             name = "lastname"
-                            onChange={this.handleLastNameChange}
+                            onChange={this.handleChange}
+                           
                             value={this.state.user.lastname}
-                            validators={['required','nameLength']}
-                            errorMessages={['This is required Field','Name should be atleast 3 and less than 21 characters long']}
                             placeholder="Last Name"
                             variant="outlined"
                             className="textfields"
                             />
+                            {errors.lastname.length > 0 && <span className='error'>{errors.lastname}</span>}
                         </div>
                         <div className="textfields">
                             <TextValidator
                             label= "Email"
                             name=  "email"
-                            onChange = {this.handleEmailChange}
+                            onChange = {this.handleChange}
                             value={this.state.user.email}
-                            validators={['required' , 'isEmail']}
-                            errorMessages={['this is a required field' , 'email is not valid']}
                             placeholder="Please enter your Email Address"
                             variant="outlined"
                             className="textfields"
                             />
+                            {errors.email.length > 0 && <span className='error'>{errors.email}</span>}
                         </div>
                         <div className="textfields">
                             <TextValidator
@@ -164,32 +178,29 @@ class Signup extends Component {
                             placeholder="Password"
                             type="password"
                             name="password"
-                            onChange={this.handlePasswordChange}
+                            onChange={this.handleChange}
                             value={this.state.user.password}
-                            validators={['required' , 'newPassword']}
-                            errorMessages={['This is a required field' , 'Password error']}
                             variant='outlined'
                             className="textfields"
                             />
+                            {errors.password.length > 0 && <span className='error'>{errors.password}</span>}
                         </div>
                         <div className="textfields">
                             <TextValidator
                             name="confirmpassword"
                             label="Confirm Password"
                             type="password"
-                      
                             placeholder="Confirm Password"
-                            
                             variant="outlined"
-                            onChange={this.handleConfirmPassword}
+                            onChange={this.handleChange}
                             value={this.state.user.confirmpassword}
-                            validators={['required' , 'confirmPassword']}
-                            errorMessages={['this is required field' , 'The Password and Confirm Password fields do not match']}
-                            className="textfields"
+                           className="textfields"
                             />
+                            {errors.confirmpassword.length > 0 && <span className='error'>{errors.confirmpassword}</span>}
                         </div>
                         <div><button class="login-button" type="submit" onClick={this.handleSubmit}>Register</button></div>
                     </ValidatorForm>
+    
                 </div>
                 </header>
             </header>
