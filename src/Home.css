@@ -19,7 +19,7 @@
 .sidebar{
     background-color: #4dc3c7;
     width: 100px;
-    height: 100ex;
+    height: 90vh;
 }
 .notification{
     color: goldenrod;
@@ -62,7 +62,6 @@
 .sidebar .MuiButton-label {
     display: grid !important;
 }
-
 .main{
     display: flex;
     max-width: 100%;
@@ -70,8 +69,7 @@
 }
 .center{
     display: flex;
-    margin-left: 20px;
-    margin-top: 20px;
+    flex: 1;
 }
 .classes{
     border: #EBECF1;
