@@ -46,24 +46,23 @@
     align-items: center;
     justify-content: center;
     border: #4dc3c7;
-    background-color: #4dc3c7;
+    background-color: #4dc3c7 !important;
     width: 100px;
     height: 80px;
 }
 .buttons:hover{
     background-color: #76ced1;
 }
-
+.active{
+    border: #EBECF1;
+    background-color: #EBECF1 !important;
+    width: 100px;
+    height: 80px;
+}
 .sidebar .MuiButton-label {
     display: grid !important;
 }
 
-.active{
-    border: #EBECF1;
-    background-color: #EBECF1;
-    width: 100px;
-    height: 80px;
-}
 .main{
     display: flex;
     max-width: 100%;

@@ -16,8 +16,8 @@ class Main extends Component {
     
     render(){
         return(
-             <Signup></Signup> 
-            
+             //<Signup></Signup> 
+            <Home></Home>
         );
     }
 }
