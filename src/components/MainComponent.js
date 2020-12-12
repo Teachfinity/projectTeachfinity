@@ -18,6 +18,7 @@ class Main extends Component {
     render(){
         return(
 
+
              <Switch>
                  <Route  path='/login' component={Login} />
                  <Route  path='/signup' component={Signup} />
@@ -26,8 +27,8 @@ class Main extends Component {
                  <Redirect to="/login" />
              </Switch>
             
-        );
-    }
+
+         ) }
 }
 
 export default Main ;

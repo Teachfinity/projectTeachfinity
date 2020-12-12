@@ -111,7 +111,6 @@ class Login extends Component {
                         <br></br><h1>Login</h1><br></br>
                         <div className="textfields form-group" >
                             <TextValidator
-                            
                             label="Email"
                             name="email"
                             onChange={this.handleChange}

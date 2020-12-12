@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import {Row} from "reactstrap" ;
 import { BrowserRouter, Switch , Route , Redirect } from 'react-router-dom';
 import "../Home.css";
@@ -36,6 +37,6 @@ function Home() {
         </div>
         
     );
-}
+    }
 
 export default Home;

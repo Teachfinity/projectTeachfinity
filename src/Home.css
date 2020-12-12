@@ -19,7 +19,7 @@
 .sidebar{
     background-color: #4dc3c7;
     width: 100px;
-    height: 100ex;
+    height: 90vh;
 }
 .notification{
     color: goldenrod;
@@ -46,23 +46,21 @@
     align-items: center;
     justify-content: center;
     border: #4dc3c7;
-    background-color: #4dc3c7;
+    background-color: #4dc3c7 !important;
     width: 100px;
     height: 80px;
 }
 .buttons:hover{
     background-color: #76ced1;
 }
-
-.sidebar .MuiButton-label {
-    display: grid !important;
-}
-
 .active{
     border: #EBECF1;
-    background-color: #EBECF1;
+    background-color: #EBECF1 !important;
     width: 100px;
     height: 80px;
+}
+.sidebar .MuiButton-label {
+    display: grid !important;
 }
 .main{
     display: flex;
@@ -71,8 +69,7 @@
 }
 .center{
     display: flex;
-    margin-left: 20px;
-    margin-top: 20px;
+    flex: 1;
 }
 .classes{
     border: #EBECF1;
