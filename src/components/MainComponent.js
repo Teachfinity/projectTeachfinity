@@ -24,7 +24,7 @@ class Main extends Component {
                  <Route  path='/signup' component={Signup} />
                  <Route path="/home" component={Home} />
                  <Route path="/sidebar" component={Sidebar} />
-                 <Redirect to="/login" />
+                 <Redirect to="/home" />
              </Switch>
             
 

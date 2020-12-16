@@ -1,17 +1,19 @@
 import React, { Component } from "react" ;
-import {Label , Button, Form } from "reactstrap" ;
+import {Label , Button, Row  } from "reactstrap" ;
 import { CommonLoading } from 'react-loadingg';
 import {TextField, Checkbox} from "@material-ui/core";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {FacebookLoginButton, GoogleLoginButton } from "react-social-login-buttons" ;
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
-import MyClasses from "./MyClasses" ;
-import Routes from "./Routes";
-import axios from "axios" ;
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { loggedUser, loginUser } from "../redux/auth/authAction";
+
+
 import "../Login.css";
-import Signup from "./Signup";
-import {Link , Redirect ,Route , Switch} from "react-router-dom" ;
-import Home from "./Home" ;
+
+import {Link } from "react-router-dom" ;
+
 
 
 
@@ -40,7 +42,30 @@ class Login extends Component {
 
         }
     }
+    componentDidMount() {
+        this.setState({ buttonText: "Register" })
 
+        if (this.props.auth.isAuthenticated) {
+            this.props.history.push("/Connect");
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth.isAuthenticated) {
+            this.props.history.push("/home"); // push user to dashboard when they login
+        }
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors,
+            });
+        }
+    }
+
+
+
+
+    
+    
+    
     
     
     handleChange = (event) => {
@@ -71,29 +96,14 @@ class Login extends Component {
        event.preventDefault() ;
 
        if(validateForm(this.state.errors)){
-            const loginData = {
-              "email" : this.state.email ,
-              "password" : this.state.password
-          }
+        const userData = {
+            email: this.state.email,
+            password: this.state.password
+        };
            this.setState({loading: true})
-          axios.post(`http://localhost:5000/api/user/login`, loginData)      
-          .then(res => {
-            this.setState({loading: false}) ;
-                    console.log(res);
-                  
-                    
-                })
-                .catch(error => {
-                    this.setState({loading: false}) ;
-                    alert(error.message);
-                })
- 
-
-
- 
-
-
-       }
+         
+           this.props.loginUser(userData); 
+ }
        else{
            alert("Please remove errors before submission") ;
        }
@@ -105,7 +115,12 @@ class Login extends Component {
         return(
             <header className="background">
                 <header className="background-cover">
-                <div className="container">
+                <div className="login-container2">    
+                <Row>
+                <div className="col-4">
+                <div className="login-container1">
+                    
+                       
                     <ValidatorForm ref="form"  >
                     { this.state.loading ? <CommonLoading /> : null }
                         <br></br><h1>Login</h1><br></br>
@@ -160,7 +175,19 @@ class Login extends Component {
                             </div>
 
                     </ValidatorForm>
-                </div>
+                            </div>
+
+
+                        </div>
+                      
+
+                        <div className="col-8">
+                            <div className="login-container3">
+                               
+                            </div>
+                        </div>
+                    </Row>
+                    </div>
                 </header>
              
             </header>
@@ -168,4 +195,21 @@ class Login extends Component {
     }
 }
 
-export default Login ;
+
+
+
+
+Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+})
+
+const mapDispatchToProps = {
+    loginUser, loggedUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login) ;

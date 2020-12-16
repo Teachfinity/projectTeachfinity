@@ -24,8 +24,9 @@
 .notification{
     color: goldenrod;
 }
-.icons{
+.iconss{
     color: #EBECF1;
+    
 }
 .iactive{
     color: #4dc3c7;
@@ -42,16 +43,17 @@
     font-weight: bolder;
     color: #4dc3c7;
 }
-.buttons{
+.buttonss{
     align-items: center;
     justify-content: center;
+    
     border: #4dc3c7;
     background-color: #4dc3c7 !important;
-    width: 100px;
+    width: 90px;
     height: 80px;
 }
-.buttons:hover{
-    background-color: #76ced1;
+.buttonss :hover{
+    background-color: #286c6e;
 }
 .active{
     border: #EBECF1;

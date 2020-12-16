@@ -1,7 +1,7 @@
 import React, { Component } from "react" ;
 import { CommonLoading } from 'react-loadingg';
 import axios from "axios" ;
-import {Form} from "reactstrap" ;
+import {Row} from "reactstrap" ;
 import {TextField} from "@material-ui/core";
 import "../Signup.css";
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
@@ -130,77 +130,89 @@ class Signup extends Component {
         return(
             <header className="background">
                 <header className="background-cover">
-                <div className="container">
-                    { this.state.loading ? <CommonLoading /> : null }
-                    <ValidatorForm>
-                        <br></br><h1>Signup</h1><br></br>
-                        <div className="textfields">
-                            <TextValidator
-                             label= "First Name"
-                             name="firstname"
-                             onChange={this.handleChange}
-                             value={this.state.user.firstname}
-                             variant="outlined"
-                             
-                             placeholder="First Name"
-                             className="textfields"
-                            />
-                            {errors.firstname.length > 0 && <span className='error'>{errors.firstname}</span>}
-                        </div>
-                        <div className="textfields">
-                            <TextValidator
-                            label= "Last Name"
-                            name = "lastname"
-                            onChange={this.handleChange}
-                           
-                            value={this.state.user.lastname}
-                            placeholder="Last Name"
-                            variant="outlined"
-                            className="textfields"
-                            />
-                            {errors.lastname.length > 0 && <span className='error'>{errors.lastname}</span>}
-                        </div>
-                        <div className="textfields">
-                            <TextValidator
-                            label= "Email"
-                            name=  "email"
-                            onChange = {this.handleChange}
-                            value={this.state.user.email}
-                            placeholder="Please enter your Email Address"
-                            variant="outlined"
-                            className="textfields"
-                            />
-                            {errors.email.length > 0 && <span className='error'>{errors.email}</span>}
-                        </div>
-                        <div className="textfields">
-                            <TextValidator
-                            label= "Password"
-                            placeholder="Password"
-                            type="password"
-                            name="password"
-                            onChange={this.handleChange}
-                            value={this.state.user.password}
-                            variant='outlined'
-                            className="textfields"
-                            />
-                            {errors.password.length > 0 && <span className='error'>{errors.password}</span>}
-                        </div>
-                        <div className="textfields">
-                            <TextValidator
-                            name="confirmpassword"
-                            label="Confirm Password"
-                            type="password"
-                            placeholder="Confirm Password"
-                            variant="outlined"
-                            onChange={this.handleChange}
-                            value={this.state.user.confirmpassword}
-                           className="textfields"
-                            />
-                            {errors.confirmpassword.length > 0 && <span className='error'>{errors.confirmpassword}</span>}
-                        </div>
-                        <div><button class="login-button" type="submit" onClick={this.handleSubmit}>Register</button></div>
-                    </ValidatorForm>
-    
+                <div className="container1">
+                    <Row>
+                        <div className="col-4">
+                        <div className="container2">
+                            {this.state.loading ? <CommonLoading /> : null}
+                            <ValidatorForm>
+                                <br></br><h1>Signup</h1><br></br>
+                                <div className="textfields">
+                                    <TextValidator
+                                        label="First Name"
+                                        name="firstname"
+                                        onChange={this.handleChange}
+                                        value={this.state.user.firstname}
+                                        variant="outlined"
+
+                                        placeholder="First Name"
+                                        className="textfields"
+                                    />
+                                    {errors.firstname.length > 0 && <span className='error'>{errors.firstname}</span>}
+                                </div>
+                                <div className="textfields">
+                                    <TextValidator
+                                        label="Last Name"
+                                        name="lastname"
+                                        onChange={this.handleChange}
+
+                                        value={this.state.user.lastname}
+                                        placeholder="Last Name"
+                                        variant="outlined"
+                                        className="textfields"
+                                    />
+                                    {errors.lastname.length > 0 && <span className='error'>{errors.lastname}</span>}
+                                </div>
+                                <div className="textfields">
+                                    <TextValidator
+                                        label="Email"
+                                        name="email"
+                                        onChange={this.handleChange}
+                                        value={this.state.user.email}
+                                        placeholder="Please enter your Email Address"
+                                        variant="outlined"
+                                        className="textfields"
+                                    />
+                                    {errors.email.length > 0 && <span className='error'>{errors.email}</span>}
+                                </div>
+                                <div className="textfields">
+                                    <TextValidator
+                                        label="Password"
+                                        placeholder="Password"
+                                        type="password"
+                                        name="password"
+                                        onChange={this.handleChange}
+                                        value={this.state.user.password}
+                                        variant='outlined'
+                                        className="textfields"
+                                    />
+                                    {errors.password.length > 0 && <span className='error'>{errors.password}</span>}
+                                </div>
+                                <div className="textfields">
+                                    <TextValidator
+                                        name="confirmpassword"
+                                        label="Confirm Password"
+                                        type="password"
+                                        placeholder="Confirm Password"
+                                        variant="outlined"
+                                        onChange={this.handleChange}
+                                        value={this.state.user.confirmpassword}
+                                        className="textfields"
+                                    />
+                                    {errors.confirmpassword.length > 0 && <span className='error'>{errors.confirmpassword}</span>}
+                                </div>
+                                <div><button class="login-button" type="submit" onClick={this.handleSubmit}>Register</button></div>
+
+                            </ValidatorForm>
+                    </div>
+                    </div>
+
+                    <div className="col-8">
+                       <div className="container3">
+                     
+                       </div>
+                    </div>
+                    </Row>
                 </div>
                 </header>
             </header>

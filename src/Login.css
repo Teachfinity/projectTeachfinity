@@ -11,21 +11,45 @@
 .background-cover{
     display: flex;
     flex-direction: row;
-    background-color: #3aa5abb7;
+     background-color: #ffffffb7; 
+    
     min-height: 100ex;
     min-width: 100%;
     justify-content: center;
     align-items: center;
 }
-.container{
+
+.login-container2{
     display: flex;
-    background-color: #EBECF1;
-    box-shadow: -30px 30px 20px rgba(0, 0, 0, 0.452);
+    background-color: #ffffff00;
+    
     color: #3AA5AB;
     justify-content: center;
     text-align: center;
-    height: 800px;
-    width: 450px;
+    height: 650px;
+    width: 1200px;
+}
+.login-container3{
+    display: flex;
+    background-image: url(./images/login-cover.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #3AA5AB;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 620px;
+    width: 800px;
+}
+.login-container1{
+    display: flex;
+    background-color: #eff0f5;
+    
+    color: #3AA5AB;
+    justify-content: center;
+    text-align: center;
+    height: 620px;
+    width: 420px;
 }
 .textfields{
     margin-bottom: 15px;

@@ -14,14 +14,16 @@ function Home() {
     
     return (
         <div >
-            <header>
-            <Header />
-            </header>
-            <Row>
-            <div className="col-1">
+        
+            <Header className="titlebar" />
+            
+            <Row className="main">
+            <div className="col-1 sidebar">
             <Sidebar />
             </div>
-            <div className="col-11">
+
+            <div className="col-11 center">
+               
                <BrowserRouter>
                <Switch>
                    <Route exact path="/home/myclasses" component={MyClasses} />
