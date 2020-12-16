@@ -23,7 +23,7 @@ class Sidebar extends Component {
     render(){
         return(
          
-           <div className="main"><div className="sidebar">
+           <div className="sidebar">
                 
                 <Button className="buttonss nav-link" href="/home/myclasses" ><School fontSize='large' className="iconss "></School><div className="text">My Classes</div></Button>
                 
@@ -38,7 +38,6 @@ class Sidebar extends Component {
                 <Button className="buttonss" href="/home/diary"><LocalLibrary fontSize='large' className="iconss"></LocalLibrary><div className="text">Diary</div></Button>
                 <Button className="buttonss" href="/home/timetable"><DateRangeIcon fontSize='large' className="iconss"></DateRangeIcon><div className="text">Timetable</div></Button>
                 <Button className="buttonss" href="/home/bookmarks"><BookmarksIcon fontSize='large' className="iconss center"></BookmarksIcon><div className="text">Bookmarks</div></Button>
-           </div> 
            </div> 
                
       

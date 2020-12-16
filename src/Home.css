@@ -1,8 +1,6 @@
 .titlebar{
     display: flex;
     background-color: #00b9be;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     height: 80px;
 }
@@ -26,7 +24,6 @@
 }
 .iconss{
     color: #EBECF1;
-    
 }
 .iactive{
     color: #4dc3c7;
@@ -46,14 +43,13 @@
 .buttonss{
     align-items: center;
     justify-content: center;
-    
     border: #4dc3c7;
     background-color: #4dc3c7 !important;
     width: 90px;
     height: 80px;
 }
 .buttonss :hover{
-    background-color: #286c6e;
+    background-color: #4cadb1;
 }
 .active{
     border: #EBECF1;

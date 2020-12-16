@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import {Row} from "reactstrap" ;
 import { BrowserRouter, Switch , Route , Redirect } from 'react-router-dom';
 import "../Home.css";
@@ -17,12 +16,12 @@ function Home() {
         
             <Header className="titlebar" />
             
-            <Row className="main">
-            <div className="col-1 sidebar">
+            <div className="main">
+            <div>
             <Sidebar />
             </div>
 
-            <div className="col-11 center">
+            <div className="center">
                
                <BrowserRouter>
                <Switch>
@@ -35,9 +34,8 @@ function Home() {
                </Switch>
                </BrowserRouter>
             </div>
-            </Row>
+            </div>
         </div>
-        
     );
     }
 
