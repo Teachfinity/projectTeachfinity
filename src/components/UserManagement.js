@@ -8,7 +8,7 @@ import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loggedUser, loginUser } from "../redux/auth/authAction";
-
+import Google from "./Google";
 
 import "../Login.css";
 
@@ -41,6 +41,8 @@ class Login extends Component {
             , loading : false  
 
         }
+
+        this.informParent = this.informParent.bind(this)
     }
     componentDidMount() {
         this.setState({ buttonText: "Register" })
@@ -90,6 +92,12 @@ class Login extends Component {
         this.setState({errors}) ;
 
     }
+
+       informParent = response => {
+        //this.props.history.push('/dashboard');
+        console.log("INFORM PARENT" + response)
+        this.props.loggedUser(response.data)
+    };
 
 
     handleSubmit = (event) => {
@@ -163,6 +171,7 @@ class Login extends Component {
                         <br></br><h5>OR</h5>
                         <div><FacebookLoginButton></FacebookLoginButton></div>
                         <div><GoogleLoginButton></GoogleLoginButton></div>
+                        <Google informParent={this.informParent} />
                         
 
                             <div>
@@ -208,7 +217,7 @@ const mapStateToProps = (state) => ({
     auth: state.auth,
 })
 
-const mapDispatchToProps = {
+const mapDispatchToProps = {  
     loginUser, loggedUser
 }
 
