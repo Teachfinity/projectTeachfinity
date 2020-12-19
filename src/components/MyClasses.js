@@ -2,8 +2,9 @@ import React, { Component } from "react" ;
 import {Card, CardImg , CardBody , CardTitle, CardText,CardSubtitle, Button, Row , Form , FormGroup , Input ,
   Modal, ModalBody , ModalHeader , Label} from 'reactstrap' ;
 
-import CreateClassLogo from "../images/createclass.png"
-import JoinClassLogo from "../images/joinclass.png"
+import CreateClassLogo from "../images/createclass.png" ;
+import JoinClassLogo from "../images/joinclass.png" ;
+import ClassList from "./ClassList" ;
 import "../App.css"
 class MyClasses extends Component {
   constructor(props){
@@ -33,76 +34,81 @@ this.setState({
 } */
 handleSubmit = (event) => {
   this.toggleModal();
-
+  this.setState({className: this.coursename.value , description: this.description.value})
   alert("Class name: " + this.coursename.value + "  Description:  " + this.description.value);
   event.preventDefault();
 }
   render(){
   return (
-       <div className="col-12  m-1">
 
+<<<<<<< HEAD
         <div className="center">
         
           <div className="cardhandle " >
+=======
+    <div className="col-12  m-1 myClasses-main">
+
+      <Row className="center">
+
+        <div className="cardhandle " >
+>>>>>>> ad425d9464de5d6c0ad26aff78b940eea4f500bb
           <Card className="cardcontainer" >
-                    <CardImg className="classcardimg " src={CreateClassLogo} />
-                    <CardBody>
-                        <CardTitle tag="h5" >
-                          
-                           Create Class
+            <CardImg className="classcardimg " src={CreateClassLogo} />
+            <CardBody>
+              <CardTitle tag="h5" >
+
+                Create Class
                         </CardTitle>
-                         <CardSubtitle>Create a new class using this option</CardSubtitle> 
-                        <br/>
-                        <br/>
-                        <div className="butcenterr">
-                        <Button onClick={this.toggleModal} outline  >Create New Class</Button>
-                        </div>
-                    </CardBody>
-                   </Card>
+              <CardSubtitle>Create a new class using this option</CardSubtitle>
+              <br />
+              <br />
+              <div className="butcenterr">
+                <Button onClick={this.toggleModal} outline  >Create New Class</Button>
+              </div>
+            </CardBody>
+          </Card>
+
+
+          <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}  >
+            <ModalHeader toggle={this.toggleModal}  >Enter Details</ModalHeader>
+            <ModalBody>
+              <Form onSubmit={(values) => this.handleSubmit(values)}>
+                <FormGroup>
+                  <Label for="courseName">Course Name:</Label>
+                  <Input type="text" id="courseName"
+                    innerRef={(input) => this.coursename = input}
+
+
+                    placeholder="Enter the name for the class/course"></Input>
+                </FormGroup>
+
+
+                <FormGroup>
+                  <Label for="courseDes">Course Description:</Label>
+                  <Input type="textarea" rows="4" id="courseDes" name="courseDes"
+                    innerRef={(input) => this.description = input}
+                    placeholder="Enter the course description here"></Input>
+                </FormGroup>
+                <br />
+                <Button color="info" value="submit" type="submit">Proceed</Button>
+
+              </Form>
+            </ModalBody>
+          </Modal>
 
 
 
 
-
-                   <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}  >
-                     <ModalHeader toggle={this.toggleModal}  >Enter Details</ModalHeader>
-                     <ModalBody>
-                       <Form onSubmit={ (values) => this.handleSubmit(values)}>
-                         <FormGroup>
-                           <Label for="courseName">Course Name:</Label>
-                           <Input type="text" id="courseName" 
-                            innerRef={(input) => this.coursename = input}
-                           
-                           
-                           placeholder="Enter the name for the class/course"></Input>
-                         </FormGroup>
-                      
-
-                         <FormGroup>
-                           <Label for="courseDes">Course Description:</Label>
-                           <Input type="textarea" rows="4" id="courseDes" name="courseDes" 
-                            innerRef={(input) => this.description = input}
-                           placeholder="Enter the course description here"></Input>
-                         </FormGroup>
-                        <br/>
-                         <Button color="info" value="submit" type="submit">Proceed</Button>
-                         
-                       </Form>
-                     </ModalBody>
-                   </Modal>
-
-
-
-
-          </div>
-          <div className="cardhandle">
+        </div>
+        <div className="cardhandle">
           <Card className="cardcontainer">
-                    <CardImg className="classcardimg" src={JoinClassLogo} />
-                    <CardBody>
-                        <CardTitle tag="h5" >
-                          
-                           Join Class
+            <CardImg className="classcardimg" src={JoinClassLogo} />
+            <CardBody>
+              <CardTitle tag="h5" >
+
+                Join Class
                         </CardTitle>
+<<<<<<< HEAD
                          <CardSubtitle>Join class by  entering the code below</CardSubtitle> 
                          <br/>
                          <CardText>
@@ -123,7 +129,37 @@ handleSubmit = (event) => {
 
         
           </div>
+=======
+              <CardSubtitle>Join class by  entering the code below</CardSubtitle>
+              <br />
+              <CardText>
+                <Form>
+                  <FormGroup>
+                    <Input type="text" name="classcode" id="classcode" placeholder="Enter code here" />
+                  </FormGroup>
+                  <div className="butcenter">
+                    <Button type="submit" outline >Search</Button>
+                  </div>
+
+                </Form>
+              </CardText>
+              {/* <CardText>{item.description}</CardText> */}
+            </CardBody>
+          </Card>
+        </div>
+      </Row>
+      <div className="col-12 center">
+        <h3> My Classes</h3>
+>>>>>>> ad425d9464de5d6c0ad26aff78b940eea4f500bb
       </div>
+
+      <div className="row center">
+        {/* Classes to be shown here */}
+
+        <ClassList name={this.state.className} description={this.state.description} />
+      </div>
+
+    </div>
       
   );
   }
