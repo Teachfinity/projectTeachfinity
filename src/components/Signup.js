@@ -132,7 +132,7 @@ class Signup extends Component {
                 <header className="background-cover">
                 <div className="container1">
                     <Row>
-                        <div className="col-4">
+                        <div>
                         <div className="container2">
                             {this.state.loading ? <CommonLoading /> : null}
                             <ValidatorForm>
@@ -207,7 +207,7 @@ class Signup extends Component {
                     </div>
                     </div>
 
-                    <div className="col-8">
+                    <div>
                        <div className="container3">
                      
                        </div>

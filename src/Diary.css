@@ -1,14 +1,13 @@
 .bg{
     display: flex;
-    flex: 1;
     background-image: url(https://static.vecteezy.com/system/resources/previews/001/229/020/non_2x/back-to-school-pattern-on-notebook-vector.jpg);
-    min-height: -webkit-fill-available !important;
+    min-height: 90ex;
     min-width: 100%;
 }
 .bg-cover{
     display: flex;
     background-color: #44adb1d0;
-    min-height: -webkit-fill-available !important;
+    min-height: 90ex;
     min-width: 100%;
 }
 .box{
@@ -18,7 +17,7 @@
     background-color: #ebecf1;
     box-shadow: -30px 30px 20px rgba(0, 0, 0, 0.452);
     color: #3AA5AB;
-    height: 700px;
+    height: 600px;
     width: 450px;
 }
 .textfield{ 

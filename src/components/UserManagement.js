@@ -125,7 +125,7 @@ class Login extends Component {
                 <header className="background-cover">
                 <div className="login-container2">    
                 <Row>
-                <div className="col-4">
+                <div>
                 <div className="login-container1">
                     
                        
@@ -156,7 +156,7 @@ class Login extends Component {
                             className="textfields"
                            />
                         </div>
-                        <div class="row">
+                        <div className="rowin">
                             <FormControlLabel
                                 control={
                                     <Checkbox
@@ -167,10 +167,9 @@ class Login extends Component {
                             />
                             <Label><b>Forgot Password?</b></Label>    
                         </div>
-                        <Button className="login-button" type="submit" onClick={this.handleSubmit}>Log in</Button>
+                        <Button className="login-button" type="submit" onClick={this.handleSubmit}>Log in</Button><br></br>
                         <br></br><h5>OR</h5>
                         <div><FacebookLoginButton></FacebookLoginButton></div>
-                        <div><GoogleLoginButton></GoogleLoginButton></div>
                         <Google informParent={this.informParent} />
                         
 
@@ -190,7 +189,7 @@ class Login extends Component {
                         </div>
                       
 
-                        <div className="col-8">
+                        <div>
                             <div className="login-container3">
                                
                             </div>

@@ -19,12 +19,14 @@ class Diary extends Component {
   }
   addtask = () => {
     if (this.state.button === 'Update') {
+      alert(this.state.key);
       const t = this.state.task
       const update = t.map(taski=>{
         if(taski===this.state.key){
           return taski = this.state.input
         }
       })
+      alert(update)
       this.setState({task: [...this.state.task, update]})
       this.setState({button: "Add"})
       this.setState({input: ""})

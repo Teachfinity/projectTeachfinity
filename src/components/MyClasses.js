@@ -41,7 +41,7 @@ handleSubmit = (event) => {
   return (
        <div className="col-12  m-1">
 
-        <Row className="center">
+        <div className="center">
         
           <div className="cardhandle " >
           <Card className="cardcontainer" >
@@ -122,7 +122,7 @@ handleSubmit = (event) => {
           </div>
 
         
-          </Row>
+          </div>
       </div>
       
   );

@@ -1,18 +1,19 @@
 .background{
     display: flex;
+    flex: 1;
     flex-direction: row;
     background-image: url(https://t4.ftcdn.net/jpg/01/99/79/89/360_F_199798901_fZNnFhICSdEvOTWmwIpiV103vdzA7cCc.jpg);
-    background-size: 100% 100%;
-    min-height: 100ex;
+    background-size: "cover";
+    min-height: -webkit-fill-available !important;
     background-repeat: no-repeat;
     justify-content: center;
     align-items: center;
 }
 .background-cover{
     display: flex;
+    flex: 1;
     flex-direction: row;
-     background-color: #ffffffb7; 
-    
+    background-color: #ffffffb7; 
     min-height: 100ex;
     min-width: 100%;
     justify-content: center;
@@ -56,6 +57,11 @@
     width: 300px;
 }
 .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.rowin{
     display: flex;
     justify-content: space-between;
     align-items: center;
