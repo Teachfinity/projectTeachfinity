@@ -5,7 +5,7 @@
     min-height: -webkit-fill-available !important;
     min-width: 100%;
 }
-.background-cover{
+.bg-cover{
     display: flex;
     background-color: #44adb1d0;
     min-height: -webkit-fill-available !important;
