@@ -13,23 +13,34 @@
 .logo{
     height: 80px;
     width: 85px;
+    
 }
 .sidebar{
-
-    position: sticky;
-
+     position: sticky;
     justify-content: center;
     align-items: center;
-
     background-color: #4dc3c7;
     width: 100px;
     height: 90vh;
 }
+
 .notification{
+    margin-top: 25px;
+    
+    font-size: 35px;
     color: goldenrod;
+    margin-right: 15px;
+   
+
 }
+
+
 .iconss{
     color: #EBECF1;
+    margin-top: 18px;
+    
+    font-size: 45px;
+    
 }
 .iactive{
     color: #4dc3c7;
