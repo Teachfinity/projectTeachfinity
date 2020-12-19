@@ -115,7 +115,7 @@ class Signup extends Component {
                 .catch(error => {
                     this.setState({ loading: false });
                     alert(error.message);
-                })
+                })    
 
 
         }
