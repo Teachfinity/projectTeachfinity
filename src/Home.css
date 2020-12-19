@@ -1,5 +1,6 @@
 .titlebar{
     display: flex;
+    position:sticky;
     background-color: #00b9be;
     width: 100%;
     height: 80px;
@@ -14,8 +15,12 @@
     width: 85px;
 }
 .sidebar{
+
+    position: sticky;
+
     justify-content: center;
     align-items: center;
+
     background-color: #4dc3c7;
     width: 100px;
     height: 90vh;

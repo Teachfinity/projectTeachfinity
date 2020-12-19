@@ -9,6 +9,7 @@ import Chat from "./Chat" ;
 import Diary from "./Diary" ;
 import Timetable from "./Timetable" ;
 import Bookmarks from "./Bookmarks" ;
+import ClassMainScreen from "./ClassMainScreen" ;
 function Home() {
     
     return (
@@ -25,7 +26,10 @@ function Home() {
                
                <BrowserRouter>
                <Switch>
+                   <Route exact path="/home/myclasses/classId"  component={ClassMainScreen} />
                    <Route exact path="/home/myclasses" component={MyClasses} />
+                   {/* Below the class id will be sent to open specific class but rn its a sample flow to show that*/}
+                 
                    <Route exact path="/home/chat" component={Chat} />
                    <Route exact path="/home/diary" component={Diary} />
                    <Route exact path="/home/timetable" component={Timetable} />
