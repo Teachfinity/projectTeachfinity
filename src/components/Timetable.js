@@ -103,8 +103,8 @@ const myEventsList = [
   {
     id: 13,
     title: 'Multi-day Event',
-    start: new Date(2015, 3, 20, 19, 30, 0),
-    end: new Date(2015, 3, 22, 2, 0, 0),
+    start: new Date(2020, 3, 20, 19, 30, 0),
+    end: new Date(2020, 3, 22, 2, 0, 0),
   },
   {
     id: 14,
