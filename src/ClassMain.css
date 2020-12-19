@@ -1,0 +1,49 @@
+.cardcontainer{
+    width: 11cm;
+    height: 11cm;
+    justify-content: center;
+    align-items: center;
+   
+  }
+
+  .container-side{
+    display: flex;
+    flex-direction: column;
+    box-shadow: none;
+    background-color: #ffffff;
+    height: 750px;
+   
+}
+
+.titlecardcontainer{
+    padding-left: 0px;
+    border: none
+
+   
+  }
+.classcardimg{
+    
+    width: 120px ;
+    height:120px ;
+}
+.container-main{
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: none;
+    background-color: #f1f1f1;
+    height: 750px;
+    
+   
+}
+.sidebuttons{
+   font-size: larger;
+   
+   padding: 5px ;
+   
+    
+}
+
+.sidebuttons :hover{
+  background-color: rgb(202, 202, 202);
+}
