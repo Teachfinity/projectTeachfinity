@@ -11,12 +11,16 @@
     justify-content: flex-end;
 }
 .logo{
-    margin-left: 5px;
     height: 80px;
     width: 85px;
 }
 .sidebar{
+
     position: sticky;
+
+    justify-content: center;
+    align-items: center;
+
     background-color: #4dc3c7;
     width: 100px;
     height: 90vh;
@@ -46,12 +50,8 @@
     align-items: center;
     justify-content: center;
     border: #4dc3c7;
-    background-color: #4dc3c7 !important;
-    width: 90px;
-    height: 80px;
-}
-.buttonss :hover{
-    background-color: #4cadb1;
+    width: 100px;
+    height: 90px;
 }
 .active{
     border: #EBECF1;
