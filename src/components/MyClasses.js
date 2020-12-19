@@ -1,57 +1,51 @@
-import React, { Component } from "react" ;
-import {Card, CardImg , CardBody , CardTitle, CardText,CardSubtitle, Button, Row , Form , FormGroup , Input ,
-  Modal, ModalBody , ModalHeader , Label} from 'reactstrap' ;
+import React, { Component } from "react";
+import {
+  Card, CardImg, CardBody, CardTitle, CardText, CardSubtitle, Button, Row, Form, FormGroup, Input,
+  Modal, ModalBody, ModalHeader, Label
+} from 'reactstrap';
 
-import CreateClassLogo from "../images/createclass.png" ;
-import JoinClassLogo from "../images/joinclass.png" ;
-import ClassList from "./ClassList" ;
+import CreateClassLogo from "../images/createclass.png";
+import JoinClassLogo from "../images/joinclass.png";
+import ClassList from "./ClassList";
 import "../App.css"
 class MyClasses extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      isModalOpen: false ,
-      className: "" ,
+      isModalOpen: false,
+      className: "",
       description: ""
     }
-    this.toggleModal = this.toggleModal.bind(this) ;
-    this.handleSubmit = this.handleSubmit.bind(this) ;
+    this.toggleModal = this.toggleModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
   }
-  toggleModal = () =>{
-    this.setState({isModalOpen: !this.state.isModalOpen})
-}
-/* handleInputChange(event) {
-  const target = event.target;
-  const value = target.value;
-  const name = target.name;
- 
-this.setState({
-    [name] : value
-  });
+  toggleModal = () => {
+    this.setState({ isModalOpen: !this.state.isModalOpen })
+  }
+  /* handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+   
+  this.setState({
+      [name] : value
+    });
+  
+  
+  } */
+  handleSubmit = (event) => {
+    this.toggleModal();
+    this.setState({ className: this.coursename.value, description: this.description.value })
+    alert("Class name: " + this.coursename.value + "  Description:  " + this.description.value);
+    event.preventDefault();
+  }
+  render() {
+    return (
 
-
-} */
-handleSubmit = (event) => {
-  this.toggleModal();
-  this.setState({className: this.coursename.value , description: this.description.value})
-  alert("Class name: " + this.coursename.value + "  Description:  " + this.description.value);
-  event.preventDefault();
-}
-  render(){
-  return (
-
-<<<<<<< HEAD
-        <div className="center">
-        
-          <div className="cardhandle " >
-=======
-    <div className="col-12  m-1 myClasses-main">
-
-      <Row className="center">
-
+      <header>
+        <Row className="center">
         <div className="cardhandle " >
->>>>>>> ad425d9464de5d6c0ad26aff78b940eea4f500bb
           <Card className="cardcontainer" >
             <CardImg className="classcardimg " src={CreateClassLogo} />
             <CardBody>
@@ -97,9 +91,8 @@ handleSubmit = (event) => {
           </Modal>
 
 
-
-
         </div>
+
         <div className="cardhandle">
           <Card className="cardcontainer">
             <CardImg className="classcardimg" src={JoinClassLogo} />
@@ -108,28 +101,6 @@ handleSubmit = (event) => {
 
                 Join Class
                         </CardTitle>
-<<<<<<< HEAD
-                         <CardSubtitle>Join class by  entering the code below</CardSubtitle> 
-                         <br/>
-                         <CardText>
-                         <Form>
-                           <FormGroup>
-                             <Input type="text" name="classcode" id="classcode" placeholder="Enter code here" />
-                           </FormGroup>
-                           <div className="butcenter">
-                           <Button type="submit"  outline  >Search</Button>
-                           </div>
-                          
-                         </Form>
-                         </CardText>
-                        {/* <CardText>{item.description}</CardText> */}
-                    </CardBody>
-                </Card>
-          </div>
-
-        
-          </div>
-=======
               <CardSubtitle>Join class by  entering the code below</CardSubtitle>
               <br />
               <CardText>
@@ -138,7 +109,7 @@ handleSubmit = (event) => {
                     <Input type="text" name="classcode" id="classcode" placeholder="Enter code here" />
                   </FormGroup>
                   <div className="butcenter">
-                    <Button type="submit" outline >Search</Button>
+                    <Button type="submit" outline  >Search</Button>
                   </div>
 
                 </Form>
@@ -147,19 +118,14 @@ handleSubmit = (event) => {
             </CardBody>
           </Card>
         </div>
-      </Row>
-      <div className="col-12 center">
-        <h3> My Classes</h3>
->>>>>>> ad425d9464de5d6c0ad26aff78b940eea4f500bb
-      </div>
-
+      
+        </Row>
       <div className="row center">
         {/* Classes to be shown here */}
 
         <ClassList name={this.state.className} description={this.state.description} />
       </div>
-
-    </div>
+</header >
       
   );
   }

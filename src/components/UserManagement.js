@@ -124,7 +124,7 @@ class Login extends Component {
             <header className="background">
                 <header className="background-cover">
                 <div className="login-container2">    
-                <Row>
+                <Row className="rowss"> 
                 <div>
                 <div className="login-container1">
                     

@@ -131,7 +131,7 @@ class Signup extends Component {
             <header className="background">
                 <header className="background-cover">
                 <div className="container1">
-                    <Row>
+                    <Row className="rowss">
                         <div>
                         <div className="container2">
                             {this.state.loading ? <CommonLoading /> : null}
