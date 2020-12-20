@@ -1,13 +1,13 @@
 .bg{
     display: flex;
     background-image: url(https://static.vecteezy.com/system/resources/previews/001/229/020/non_2x/back-to-school-pattern-on-notebook-vector.jpg);
-    min-height: 90ex;
     min-width: 100%;
 }
 .bg-cover{
     display: flex;
-    background-color: #44adb1d0;
-    min-height: 90ex;
+    justify-content: center;
+    align-items: center;
+    background-color: #44adb173;
     min-width: 100%;
 }
 .box{

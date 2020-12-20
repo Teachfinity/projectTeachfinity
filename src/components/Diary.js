@@ -45,7 +45,7 @@ class Diary extends Component {
   render() {
     return (
       <header className="bg">
-        <header className="background-cover">
+        <header className="bg-cover">
           <div className="box">
             <br></br><h1>My Diary</h1><br></br>
             <div>

@@ -1,19 +1,25 @@
 import React from 'react'
 
-import { Calendar, momentLocalizer } from 'react-big-calendar'
+import { Calendar, momentLocalizer} from 'react-big-calendar'
+import {
+  Modal, ModalHeader, Form, FormGroup, Input, Label, Button
+} from 'reactstrap';
+import { DropdownButton } from 'react-bootstrap';
+import MenuItem from '@material-ui/core/MenuItem'
+
 import moment from 'moment'
 
 import "../Timetable.css";
 
 const localizer = momentLocalizer(moment) // or globalizeLocalizer
 const now = new Date();
-const myEventsList = [
+const myEventsList = [ 
   {
     id: 0,
     title: 'All Day Event very long title',
     allDay: true,
-    start: new Date(2015, 3, 0),
-    end: new Date(2015, 3, 1),
+    start: new Date(2020, 0, 0),
+    end: new Date(2020, 0, 1),
   },
   {
     id: 1,
@@ -167,18 +173,85 @@ const myEventsList = [
     end: new Date(2015, 3, 14, 20, 0, 0),
   },
 ]
-
 export default class Timetable extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalIsOpen: false,
+      selecteddate: '',
+      date: '',
+      events: {
+        title: " ",
+        start: new Date(),
+        end: new Date(),
+      }
+    }
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+  updatestate = event => {
+    const {value}  = event.target;
+    this.setState({ events: {
+      title: value, 
+      start: new Date(this.state.date),
+      end: new Date(this.state.date),
+    }})
+  }
+  onSlotChange(slotInfo) {
+    //var startDate = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DD HH:mm:ss");
+    //var endDate = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DD HH:mm:ss");
+    //alert('startTime', startDate); //shows the start time chosen
+    //alert('endTime', endDate); //shows the end time chosen
+    this.setState({selecteddate: moment(slotInfo.start.toLocaleString()).format("DD-MM-YYYY")})
+    this.setState({date: moment(slotInfo.start.toLocaleString()).format("MM-DD-YYYY")})
+    this.toggleModal();
+  }
+  toggleModal(){
+    this.setState({ modalIsOpen: !this.state.modalIsOpen })
+  }
+  onEventClick(event) {
+    alert(event) //Shows the event details provided while booking
+    myEventsList.push(this.state.events);
+  }
+  onFormSubmit = (event) =>{
+    event.preventDefault();
+    myEventsList.push(this.state.events);
+    //myEventsList.push({title: this.state.events.title, start: this.state.events.start, end: this.state.events.end});
+    this.toggleModal();
+    this.setState({events: {title: " "}})
+  }
+  renderModal = () => {
+    if (!this.state.modalIsOpen) return;
+    return (
+      <Modal
+        isOpen={this.state.modalIsOpen}
+        toggle={this.toggleModal}
+      >
+        <ModalHeader toggle={this.toggleModal}>Add Event: {this.state.selecteddate}</ModalHeader>
+        <Form onSubmit={this.onFormSubmit}>
+          <FormGroup>
+            <Label className="eventlabel" for="eventname">Event Name:</Label>
+            <Input value={this.state.events.title} onChange={this.updatestate} className="eventinput" type="text" id="eventname"
+            placeholder="Enter title for event..."></Input>
+          </FormGroup>
+          <br/>
+          <Button color="info" value="submit" type="submit">Add</Button>
+        </Form>
+      </Modal>
+    );
+  }
   render() {
     return (
       <div className="wallpaper">
         <Calendar className="wallpaper"
           localizer={localizer}
+          selectable={true}
+          onSelectEvent={event => this.onEventClick(event)}
+          onSelectSlot={(slotInfo) => this.onSlotChange(slotInfo)}
           events={myEventsList}
           startAccessor="start"
           endAccessor="end"
         />
+        {this.renderModal()}
       </div>
     )
   }

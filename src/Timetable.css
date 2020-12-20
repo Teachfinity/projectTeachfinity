@@ -29,5 +29,18 @@
     background-color: #62949d !important;
 }
 .rbc-today {
-    background-color: rgba(255, 192, 203, 0.774) !important;
+    background-color: rgba(255, 192, 203, 0.5) !important;
+}
+.eventlabel{
+    margin-left: 20px;
+}
+.eventinput{
+    width: 400px;
+    margin-left: 50px;
+}
+.addbutton{
+    padding-left: 1.25cm;
+}
+.rbc-row{
+    font-size: 18px;
 }

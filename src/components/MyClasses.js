@@ -37,7 +37,7 @@ class MyClasses extends Component {
   handleSubmit = (event) => {
     this.toggleModal();
     this.setState({ className: this.coursename.value, description: this.description.value })
-    alert("Class name: " + this.coursename.value + "  Description:  " + this.description.value);
+    //alert("Class name: " + this.coursename.value + "  Description:  " + this.description.value);
     event.preventDefault();
   }
   render() {
