@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import {Card, CardImg , CardBody , CardTitle, CardText,CardSubtitle, Button} from 'reactstrap' ;
-    import { Link} from 'react-router-dom';
+   
 import ClassImg from "../images/new-class-logo.png" ;
 import ContentLoader from "react-content-loader" ;
 import MyLoader from "./content-loader" ;
 import "../ClassMain.css" ;
+import Jitsi from 'react-jitsi'
+import {Route, Switch, Redirect , BrowserRouter , Link} from 'react-router-dom'
+import ClassMeeting from "./classMeeting";
+import classAnnouncements from "./classAnnouncements" ;
 
 class ClassMainScreen extends Component {
     constructor(props){
@@ -26,22 +30,26 @@ class ClassMainScreen extends Component {
                         </Card >
                         <br />
                         <br />
-                        <div className="sidebuttons">Announcements</div>
+                        <Link className="sidebuttons" to="/home/myclasses/classId/announcements" >Announcements</Link>
                      
-                        <div className="sidebuttons">Meetings</div>
-                        <div className="sidebuttons">Chat Area</div>
+                        <Link className="sidebuttons" to="/home/myclasses/classId/meeting">Meetings</Link>
+                        <Link className="sidebuttons">Chat Area</Link>
 
 
                     </div>
-                    
+                
                     
                      
                     <div className="col-9 container-main">
-                    <MyLoader />
-                    <MyLoader />
-                    <MyLoader />
-                    <MyLoader />
-
+                        <BrowserRouter>
+                        <Switch>
+                            <Route exact path='/home/myclasses/classId/meeting' component={ClassMeeting} />
+                            <Route exact  path="/home/myclasses/classId/announcements" component={classAnnouncements} />
+                         
+                            <Redirect to='/home/myclasses/classId/announcements'/>
+                            
+                        </Switch>
+                        </BrowserRouter>
                     </div>
                     </div>           
             </div>

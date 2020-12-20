@@ -26,8 +26,8 @@ function Home() {
                
                <BrowserRouter>
                <Switch>
-                   <Route exact path="/home/myclasses/classId"  component={ClassMainScreen} />
-                   <Route exact path="/home/myclasses" component={MyClasses} />
+                   <Route  path="/home/myclasses/classId"  component={ClassMainScreen} />
+                   <Route  path="/home/myclasses" component={MyClasses} />
                    {/* Below the class id will be sent to open specific class but rn its a sample flow to show that*/}
                  
                    <Route exact path="/home/chat" component={Chat} />

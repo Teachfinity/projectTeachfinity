@@ -130,9 +130,10 @@ class Login extends Component {
                     
                        
                     <ValidatorForm ref="form"  >
-                    { this.state.loading ? <CommonLoading /> : null }
+                    {/* { this.state.loading ? <CommonLoading /> : null } */}
                         <br></br><h1>Login</h1><br></br>
                         <div className="textfields form-group" >
+                        { this.state.loading ? <CommonLoading /> : null }
                             <TextValidator
                             label="Email"
                             name="email"
