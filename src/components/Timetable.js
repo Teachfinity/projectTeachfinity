@@ -220,9 +220,10 @@ export default class Timetable extends React.Component {
     this.setState({time: ''})
   }
   handleDateChange = (date) => {
+    //alert(date)
     //setSelectedDate(date);
     //this.setState({date: this.state.date+" "+date})
-    this.setState({selecteddate: date})
+    this.setState({date: date})
   };
   renderModal = () => {
     if (!this.state.modalIsOpen) return;
