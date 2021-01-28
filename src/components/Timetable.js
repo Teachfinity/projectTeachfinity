@@ -1,6 +1,6 @@
 import React from 'react'
 import DateFnsUtils from '@date-io/date-fns';
-import { Calendar, momentLocalizer} from 'react-big-calendar'
+import { Calendar, momentLocalizer } from 'react-big-calendar'
 import {
   Modal, ModalHeader, Form, FormGroup, Input, Label, Button
 } from 'reactstrap';
@@ -15,7 +15,7 @@ import "../Timetable.css";
 
 const localizer = momentLocalizer(moment) // or globalizeLocalizer
 const now = new Date();
-const myEventsList = [ 
+const myEventsList = [
   {
     id: 0,
     title: 'All Day Event very long title',
@@ -182,7 +182,8 @@ export default class Timetable extends React.Component {
       modalIsOpen: false,
       selecteddate: '',
       date: '',
-      time: '',
+      enddate: '',
+      eventname: '',
       events: {
         title: " ",
         start: new Date(),
@@ -192,38 +193,54 @@ export default class Timetable extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
   updatestate = event => {
-    const {value}  = event.target;
-    this.setState({ events: {
-      title: value, 
-      start: new Date(this.state.date),
-      end: new Date(this.state.date),
-    }})
+    const { value } = event.target;
+    this.setState({eventname: value});
+    this.setState({
+      events: {
+        title: value,
+        start: new Date(this.state.date),
+        end: new Date(this.state.enddate),
+      }
+    })
   }
   onSlotChange(slotInfo) {
-    this.setState({selecteddate: moment(slotInfo.start.toLocaleString()).format("DD-MM-YYYY")})
-    this.setState({date: moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DD HH:mm:ss")})
+    this.setState({ selecteddate: moment(slotInfo.start.toLocaleString()).format("DD-MM-YYYY") })
+    this.setState({ date: moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DD HH:mm:ss") })
+    this.setState({ enddate: moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DD HH:mm:ss") })
     //alert(this.state.selecteddate)
     this.toggleModal();
   }
-  toggleModal(){
+  toggleModal() {
     this.setState({ modalIsOpen: !this.state.modalIsOpen })
   }
   onEventClick(event) {
     alert(event) //Shows the event details provided while booking
   }
-  onFormSubmit = (event) =>{
+  onFormSubmit = (event) => {
     event.preventDefault();
     myEventsList.push(this.state.events);
-    //myEventsList.push({title: this.state.events.title, start: this.state.events.start, end: this.state.events.end});
     this.toggleModal();
-    this.setState({events: {title: " "}})
-    this.setState({time: ''})
+    this.setState({ eventname: ''})
   }
   handleDateChange = (date) => {
-    //alert(date)
-    //setSelectedDate(date);
-    //this.setState({date: this.state.date+" "+date})
-    this.setState({date: date})
+    this.setState({
+      events: {
+        title: this.state.eventname,
+        start: new Date(date),
+        end: new Date(this.state.enddate),
+      }
+    })
+    this.setState({ date: date })
+  };
+  handleEndDateChange = (date) => {
+    this.setState({
+      events: {
+        title: this.state.eventname,
+        start: new Date(this.state.date),
+        end: new Date(date),
+      }
+    })
+    this.setState({ enddate: date })
   };
   renderModal = () => {
     if (!this.state.modalIsOpen) return;
@@ -236,19 +253,28 @@ export default class Timetable extends React.Component {
         <Form onSubmit={this.onFormSubmit}>
           <FormGroup>
             <Label className="eventlabel" for="eventname">Event Name:</Label>
-            <Input value={this.state.events.title} onChange={this.updatestate} className="eventinput" type="text" id="eventname"
-            placeholder="Enter title for event..."></Input>
+            <Input value={this.state.eventname} onChange={this.updatestate} className="eventinput" type="text" id="eventname"
+              placeholder="Enter title for event..."></Input>
           </FormGroup>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <KeyboardDateTimePicker
-        value={this.state.date}
-        onChange={this.handleDateChange}
-        label="Select Date/Time"
-        minDate={new Date("2018-01-01T00:00")}
-        format="yyyy/MM/dd hh:mm a"
-      />
-    </MuiPickersUtilsProvider>
-          <br/>
+            <KeyboardDateTimePicker
+              value={this.state.date}
+              onChange={this.handleDateChange}
+              label="Select Start Date/Time"
+              minDate={new Date("2018-01-01T00:00")}
+              format="yyyy/MM/dd hh:mm a"
+            />
+          </MuiPickersUtilsProvider>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDateTimePicker
+              value={this.state.enddate}
+              onChange={this.handleEndDateChange}
+              label="Select End Date/Time"
+              minDate={new Date("2018-01-01T00:00")}
+              format="yyyy/MM/dd hh:mm a"
+            />
+          </MuiPickersUtilsProvider>
+          <br />
           <Button color="info" value="submit" type="submit">Add</Button>
         </Form>
       </Modal>
